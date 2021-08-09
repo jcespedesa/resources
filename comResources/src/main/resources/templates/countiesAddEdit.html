@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"> 
+
+	<head>
+
+  		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  		
+  		<title>Counties</title>
+  		
+  		<link rel="stylesheet" th:href="@{/css/bootstrap-4.0.0.min.css}">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+		
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+				
+	</head>
+
+	<body id="page-top">
+
+  <!-- Navigation -->
+  		<nav id="hcssmenu">
+    		<ul>
+        		<li>
+           			<a href="/comResources/cms/counties/list">Back</a>
+        		</li>
+            	
+            </ul>
+      	</nav>
+   
+  		
+
+   		<div class="container">
+      			<div class="row">
+        			<div class="col-lg-12 text-center">
+				          <p class="navbar-brand" style="color:#880000;font-size:15px;">Add/Edit Counties</p>
+				          
+        			</div>
+      			</div>
+     		
+  				<form class="utilityForm" th:action="@{/comResources/cms/counties/createCounty}" th:object="${county}" method="post">
+                        	
+                	<div class="form-group">
+                       	<label for="countyName" class="col-form-label">County Name<sup>*</sup>: </label> 
+                       	<input type="text" th:field="*{countyName}" id="countyName" placeholder="County Name" required  size="50" maxlength="60"/>
+                    </div>
+                    
+                    <div class="form-group">
+                       	<label for="state" class="col-form-label">State: </label> 
+                       	<input type="text" th:field="*{state}" id="state" placeholder="State" size="5" maxlength="2"/>
+                    </div>
+                    
+                  					
+					<div class="form-group">
+                    	<label for="latLon" class="col-form-label">Latitude Longitude: </label> 
+                        <input type="text" th:field="*{latLon}" id="latLon" placeholder="Latitude Longitude" size="50" maxlength="60"/>
+                    </div>
+                     
+                    <div class="form-group">
+                    	<label for="lat" class="col-form-label">Latitude: </label> 
+                        <input type="text" th:field="*{lat}" id="lat" placeholder="Latitude" size="50" maxlength="50"/>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<label for="lon" class="col-form-label">Longitude: </label> 
+                        <input type="text" th:field="*{lon}" id="lon" placeholder="Longitude" size="50" maxlength="50"/>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<label for="zoomView" class="col-form-label">Zoom View: </label> 
+                        <input type="text" th:field="*{zoomView}" id="zoomView" placeholder="Zoom View" size="5" maxlength="2"/>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                       	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                       	<a href="/comResources/cms/counties/list" class="btn btn-secondary btn-sm">
+                			<i class="fas fa-back ml-2"> Cancel </i>
+                		</a>
+                    </div>
+ 
+                    <input type="hidden" id="id" th:field="*{countyid}"/>
+     				
+                        	
+            	</form>
+  				
+  		</div>
+  		<footer class="customFooter">&copy;TRC Corp</footer> 
+	</body>
+</html>			
+				
+				

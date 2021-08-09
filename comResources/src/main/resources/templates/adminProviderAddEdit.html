@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"> 
+
+	<head>
+
+  		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  		
+  		<title>Providers</title>
+  		
+  		<link rel="stylesheet" th:href="@{/css/bootstrap-4.0.0.min.css}">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+		
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+				
+	</head>
+
+	<body id="page-top">
+
+  <!-- Navigation -->
+  		<nav id="hcssmenu">
+    		<ul>
+        		<li><a href="/comResources/cms/providers/list">Back</a></li>
+           		<li><a th:href="${'/comResources/cms/providers/mapInfo/'+ {provider.providerid}}">Map Info</a></li>
+           		<li><a th:href="${'/comResources/cms/providers/assignInfo/'+ {provider.providerid}}">Assigned Resources</a></li>
+           </ul>
+      	</nav>
+   
+  		
+
+   		<div class="container">
+      			<div class="row">
+        			<div class="col-lg-12 text-center">
+				          <p class="navbar-brand" style="color:#880000;font-size:15px;">Add/Edit Providers</p>
+				          
+        			</div>
+      			</div>
+     		
+  				<form class="utilityForm" th:action="@{/comResources/cms/providers/createProvider}" th:object="${provider}" method="post">
+                        	
+                	<div class="form-group">
+                       	<label for="providerName" class="col-form-label">Provider Name<sup>*</sup>: </label> 
+                       	<input type="text" th:field="*{providerName}" id="providerName" placeholder="Provider Name" required  size="70" maxlength="70"/>
+                    </div>
+                    
+                    <div class="form-group">
+                       	<label for="address" class="col-form-label">Address :</label> 
+                       	<input type="text" th:field="*{address}" id="address" placeholder="Address" size="100" maxlength="80"/>
+                    </div>
+                   
+                    <div class="form-group">
+      					<label for="countyNumber" class="col-form-label">County :</label> 
+      					<select th:field="*{countyNumber}" id="countyNumber" required>
+      						<option th:value="*{countyNumber}" th:text="*{county}"></option>
+      								
+    						<option th:each="county : ${counties}" th:value="${county.countyid}" th:text="${county.countyName}"></option>
+    					</select>
+					</div>
+                    
+                     <div class="form-group">
+                    	<label for="Active">Active : </label>
+                        <select th:field="*{active}" id="active">
+                           	<option th:value="*{active}" th:text="*{active}"></option>
+                           	<option th:value="Yes" th:text="Yes"></option>
+                           	<option th:value="No" th:text="No"></option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<label for="phone" class="col-form-label">Phone : </label> 
+                        <input type="text" th:field="*{phone}" id="phone" placeholder="Phone(s)" size="50" maxlength="60"/>
+                    </div>
+                  			
+                  	<div class="form-group">
+                    	<label for="email" class="col-form-label">Email : </label> 
+                        <input type="text" th:field="*{email}" id="email" placeholder="Email" size="50" maxlength="60"/>
+                    </div>		
+                  			
+                  	<div class="form-group">
+      					<label for="notes">Notes :</label><br>
+      					<textarea id="notes" th:field="*{notes}" rows="10" cols="150"></textarea>
+					</div>		
+                  			
+                  	<div class="form-group">
+                    	<label for="contact" class="col-form-label">Contact Person : </label> 
+                        <input type="text" th:field="*{contact}" id="contact" placeholder="Contact Person Name" size="50" maxlength="60"/>
+                    </div>			
+                  			
+                  	<div class="form-group">
+                    	<label for="otherPhone" class="col-form-label">Contact Phone : </label> 
+                        <input type="text" th:field="*{otherPhone}" id="otherPhone" placeholder="Contact Phone" size="50" maxlength="60"/>
+                    </div>		
+                  			
+                  	<div class="form-group">
+                    	<label for="website" class="col-form-label">Provider Web Site : </label> 
+                        <input type="text" th:field="*{website}" id="website" placeholder="Provider General URL" size="100" maxlength="70"/>
+                    </div>		
+                  			
+                  					
+					<div class="form-group">
+                    	<label for="latLon" class="col-form-label">Latitude/Longitude: </label> 
+                        <input type="text" th:field="*{latLon}" id="latLon" placeholder="" size="50" maxlength="60" readOnly/>
+                    </div>
+                     
+                    <div class="form-group">
+                    	<label for="lat" class="col-form-label">Latitude: </label> 
+                        <input type="text" th:field="*{lat}" id="lat" placeholder="" size="50" maxlength="50" readOnly/>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<label for="lon" class="col-form-label">Longitude: </label> 
+                        <input type="text" th:field="*{lon}" id="lon" placeholder="" size="50" maxlength="50" readOnly/>
+                    </div>
+                                      
+                    <div class="form-group">
+                    	<label for="typeProvider">Type Provider : </label>
+                        <select th:field="*{typeProvider}" id="typeProvider">
+                           	<option th:value="*{typeProvider}" th:text="*{typeProvider}"></option>
+                           	<option value="Catholic Charities">Catholic Charities</option>
+                           	<option value="Community">Community</option>
+                           	<option value="Parish">Parish</option>
+                        </select>
+                    </div>	
+                    
+                    <div class="form-group">
+                    	<label for="fax" class="col-form-label">Fax Number : </label> 
+                        <input type="text" th:field="*{fax}" id="fax" placeholder="fax" size="50" maxlength="50"/>
+                    </div>
+                    
+                    <div class="form-group">
+      					<label for="nearestMetroNumber" class="col-form-label">Near Station :</label> 
+      					<select th:field="*{nearestMetroNumber}" id="nearestMetroNumber" required>
+      						<option th:value="*{nearestMetroNumber}" th:text="*{nearestMetro}"></option>
+      								
+    						<option th:each="station : ${stations}" th:value="${station.stationid}" th:text="${station.station}"></option>
+    					</select>
+					</div>
+				                    
+                    <div class="form-group">
+                    	<label for="dateLastUpdate" class="col-form-label">Date Last Update : </label> 
+                        <input type="text" th:field="*{dateLastUpdate}" id="dateLastUpdate" placeholder="" size="50" maxlength="50" readOnly/>
+                    </div>
+                    
+                    
+                    <div class="form-group">
+                       	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                       	<a href="/comResources/cms/providers/list" class="btn btn-secondary btn-sm">
+                			<i class="fas fa-back ml-2"> Cancel </i>
+                		</a>
+                    </div>
+ 
+                    <input type="hidden" id="id" th:field="*{providerid}"/>
+     				
+                        	
+            	</form>
+  				
+  		</div>
+  		<footer class="customFooter">&copy;TRC Corp</footer> 
+	</body>
+</html>			
+				
+				

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Providers view</title>
+	
+		<link rel="stylesheet" th:href="@{/css/bootstrap-4.0.0.min.css}">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+		<link rel="stylesheet" th:href="@{/css/mapCreator.css}">
+			
+	</head>
+	<body>
+		<section id="what-we-do">
+			<div class="container-fluid">
+				<h3 class="section-title mb-2 h3" th:text="${provider.providerName}"></h3>
+				<p class="text-center second-title h5">Services they offer</p>
+			
+				<div class="stickyObject">
+			
+					<span th:if="${countyNumber=='null'}">
+    					<a class="previous round" th:href="${'/comResources/providers/'+ {resourceNumber}}" role="button">Back</a>
+    				</span>
+												
+    				<span th:unless="${countyNumber=='null'}">
+    					<a class="previous round" th:href="${'/comResources/providers/'+ {countyNumber} +'/'+ {resourceNumber}}" role="button">Back</a>
+    				</span>
+    				
+				</div>
+				
+			
+				<div class="row mt-5">
+			
+					<div class="col-sm-4">
+						<div class="card" th:each="resource : ${resources}">
+							<div class="card-block">
+								<div class="row">
+									<div class="col">
+										<img class="resElement" th:src="@{${'/images/icons/'+ resource.priznakUpdate}}"/><br>
+										<label class="card-title" th:text="${resource.buffer}">Resource title</label> 
+										
+										<p class="card-text" th:text="${resource.notes}"></p>
+									
+										
+									</div>
+																	
+								</div>	
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8">
+						<div class="cardMain">
+												
+								<label style="color:#006400 !important;font-size:15px;font-weight:700" th:text="${provider.address}"></label><br>
+								<label style="color:#000088 !important;font-size:15px;font-weight:700" th:text="${provider.phone}"></label><br>
+								<label style="color:#000088 !important;font-size:15px;font-weight:700" th:text="${provider.email}"></label><br>
+							
+							<label th:text="${provider.notes}"></label>
+						</div>	
+						
+						<div class="stickyObject">
+							
+							<div  id="map"></div>	
+							<input type="hidden" id="lat" th:value="${lat}"/>
+							<input type="hidden" id="lon" th:value="${lon}"/>
+							<input type="hidden" id="provider" th:value="${provider.providerName}"/>
+						</div>				
+					</div>
+				</div>
+			
+			</div>
+			
+				
+		</section>
+	<!-- /Services section -->
+	
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<!--  <script th:src="@{/js/mapCreator.js}"></script> -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP-IN6oY1fOpsch8PbzPv1PL1cDZIc0kY&libraries=places&callback=initMap" defer></script> 
+		
+		<script>
+			var map;
+		  	
+			var latRaw=document.getElementById('lat');
+			var lonRaw=document.getElementById('lon');
+			var providerRaw=document.getElementById('provider');
+								  	
+			var lat=latRaw.value;
+			var lon=lonRaw.value;
+			var provider=providerRaw.value;
+			
+				  			  	 	
+			function initMap() 
+			{
+				//alert("Lat is "+ lat +" and Lon is "+ lon);
+					  		
+			   	map=new google.maps.Map(document.getElementById('map'), 
+			   	{
+			   		center: new google.maps.LatLng(lat,lon),
+			   		zoom: 10
+			   	});
+			   	
+			   	new google.maps.Marker({
+			   	    position: {
+			              lat : parseFloat(lat),
+			              lng : parseFloat(lon)
+			        },
+			   	    map,
+			   	    title: provider,
+			   	  });
+
+			}
+			
+		</script>
+		
+		
+	</body>
+</html>

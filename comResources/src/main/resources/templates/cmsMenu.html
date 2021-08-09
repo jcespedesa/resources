@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Cms Menu</title>
+		
+		<link rel="stylesheet" th:href="@{/css/bootstrap-4.0.0.min.css}">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+		
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		
+	</head>
+	<body>
+	
+		<div class="container">
+					
+			<!-- Navigation -->
+  		
+		<span th:include="topMenu"> Top Menu </span>
+		
+		<label class="warning" th:text="${message}"></label>
+			
+		</div>
+				
+	</body>
+</html>

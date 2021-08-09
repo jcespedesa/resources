@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Community Resources</title>
+		
+		<link rel="stylesheet" th:href="@{/css/bootstrap-4.0.0.min.css}">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		
+	</head>
+	<body>
+		<div class="container">
+		
+				
+			<div class="row">
+        		<div class="col-lg-12 text-center">
+        			
+        			
+          			<h2 class="section-heading text-uppercase">Community Resources</h2>
+          			<h3 class="section-subheading text-muted">Serving the DC and Maryland Areas</h3>
+        		</div>
+      		</div>
+      		<div class="row">&nbsp;</div>
+      		<div class="row">
+      		
+      			<div class="col col-md-2">
+      				
+						<div class="stickyObject">
+							<a class="previous round" href="/comResources/" role="button">Back</a>
+															
+						</div>
+	  			
+      			</div>
+      		
+      			<div class="col col-md-2">
+  				
+  						<div class="dropdown">
+  							<button class="btn btn-info">List of Resources</button>
+  							<div class="dropdown-content">
+  								<div th:each="resource : ${resources}">
+  									
+  									<a th:href="${'/comResources/providers/'+ {resource.resourceid}}" th:text="${resource.resourceName}"></a>
+  									
+  								</div>				
+  						</div>
+					</div>
+      		
+      			</div>
+      			<div class="col-md-auto">
+     		
+      				<div class="container timeline-image">
+                		<img class="rounded-circle img-fluid" src="/images/index/mapDCMDVA.png" alt="">
+                		<div class="centered">
+							
+							<ul th:each="county : ${counties}">	
+								
+								<li><a class="btn btn-warning" th:href="${'/comResources/location/'+ {county.countyid}}" role="button" th:text="${county.countyName}"></a></li>
+								<li>&nbsp;</li>
+																
+							</ul>
+						</div>
+              		</div>
+      		
+        		</div>
+		
+			</div>
+		</div>
+		
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<script th:src="@{/js/bootstrap-4.0.0.min.js}"></script>
+
+	</body>
+</html>

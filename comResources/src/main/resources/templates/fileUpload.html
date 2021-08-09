@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Community Resources</title>
+		
+		<link rel="stylesheet" th:href="@{/css/bootstrap-4.0.0.min.css}">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		
+	</head>
+	<body>
+		<div class="container-sm">
+		
+			
+			<div class="row">
+		
+				<div class="col">					      		      		
+      				<div class="container timeline-image">
+      					<div class="stickyObject">
+                			<ul>
+								<li><a href="/comResources/cms/aws/list">Back</a></li>
+								<li>&nbsp;</li>
+							</ul>
+						</div>	
+				
+            		</div>	
+            	</div>
+            	<div class="col">
+            		<div class="scanArea">
+            			<label class="label label-info"><b>Upload Files to the AWS repository</b></label> 
+            	
+  						<form method="Post" th:action="@{/comResources/cms/file/upload}" enctype="multipart/form-data">
+    					    				
+    						<label for="fileSelection" class="col-form-label"><b>Select a file :</b></label> 
+    						<input class="btn btn-primary btn-sm" type="file" name="file"/> <br/><br/>
+    				    				
+    						<button class="btn btn-warning btn-sm" type="submit">Upload file</button>
+  						
+  						</form>
+  			
+					</div>
+				</div>
+				<div class="col">
+											
+				</div>	
+				<div class="col"></div>	
+			</div>
+		</div>	
+	</body>
+</html>
+
+
+

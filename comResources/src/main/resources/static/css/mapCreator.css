@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+//@import url('https://maps.googleapis.com/maps/api/js?key=AIzaSyCP-IN6oY1fOpsch8PbzPv1PL1cDZIc0kY&callback=initMap');
+
+#map 
+{
+  height: 400px;
+  width: 600px;
+  border: 1px solid;
+}

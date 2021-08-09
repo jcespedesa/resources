@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"> 
+
+	<head>
+
+  		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  		
+  		<title>Resources</title>
+  		
+  		<link rel="stylesheet" th:href="@{/css/bootstrap-4.0.0.min.css}">
+		<link rel="stylesheet" th:href="@{/css/style.css}">
+		<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+		
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+				
+	</head>
+
+	<body id="page-top">
+
+  <!-- Navigation -->
+  		<nav id="hcssmenu">
+    		<ul>
+        		<li>
+           			<a href="/comResources/cms/resources/list">Back</a>
+        		</li>
+            	
+            </ul>
+      	</nav>
+   
+  		
+
+   		<div class="container">
+      			<div class="row">
+        			<div class="col-lg-12 text-center">
+				          <p class="navbar-brand" style="color:#880000;font-size:15px;">Add/Edit Resources</p>
+				          
+        			</div>
+      			</div>
+     		
+  				<form class="utilityForm" th:action="@{/comResources/cms/resources/createResource}" th:object="${resource}" method="post">
+                        	
+                	<div class="form-group">
+                       	<label for="resourceName" class="col-form-label">Resource Name<sup>*</sup>: </label> 
+                       	<input type="text" th:field="*{resourceName}" id="resourceName" placeholder="Resource Name" required  size="20" maxlength="25"/>
+                    </div>
+                    
+                    <div class="form-group">
+                    	<img th:src="@{${'/images/icons/'+ resource.icon}}" class="img-rounded" alt=""/>
+                       	<label for="icon" class="col-form-label">File Icon: </label> 
+                       	<input type="text" th:field="*{icon}" id="icon" placeholder="Icon file " size="30" maxlength="30"/>
+                   </div>
+                    
+                    <div class="form-group">
+                    	<label for="Active">Active : </label>
+                        <select th:field="*{active}" id="active">
+                           	<option th:value="*{active}" th:text="*{active}"></option>
+                           	<option th:value="Yes" th:text="Yes"></option>
+                           	<option th:value="No" th:text="No"></option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                       	<input type="submit" class="btn btn-primary btn-sm" value=" Submit ">
+                       	<a href="/comResources/cms/resources/list" class="btn btn-secondary btn-sm">
+                			<i class="fas fa-back ml-2"> Cancel </i>
+                		</a>
+                    </div>
+                    
+                     
+                    <input type="hidden" id="id" th:field="*{resourceid}"/>
+     				
+                        	
+            	</form>
+  				
+  		</div>
+  		<footer class="customFooter">&copy;TRC Corp</footer> 
+	</body>
+</html>			
+				
+				
