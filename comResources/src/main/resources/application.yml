@@ -1,8 +1,8 @@
 cloudStorage:
   aws:
     credentials:
-      access-key: AKIAQEV7TBYOJ4PCNIZJ
-      secret-key: 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
+      access-key: 
+      secret-key: 
     region:
       static: us-east-1
     stack:
